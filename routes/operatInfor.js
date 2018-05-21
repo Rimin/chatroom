@@ -73,23 +73,25 @@ router.post('/updateUserInfor',function(req,res,next){
                 if(user[j].friend[i]._id==id){
                 user[j].friend[i].nickname = nickname;
                 user[j].save(function(err,doc){
+                console.log("test")
                 if(err){
-                //console.log(err); 
-                res.send({ "result":"failed", "reason":"服务器错误"});}
+                console.log(err); 
+                 res.send({ "result":"failed", "reason":"服务器错误"});
+                }
                 //  res.send({"result":"success"});
-                User_Login_Model.update(field,{"account":req.body.nickname},function(err,result){
-                    if(err){
-                    res.send({ "result":"failed", "reason":"服务器错误"});
-                    } 
-                    else{
-                        res.send({"result":"success"});
-                  }
-                }) 
               }) 
              }
             }
            }
-                
+           User_Login_Model.update(field,{"account":req.body.nickname},function(err,result){
+            if(err){
+            res.send({ "result":"failed", "reason":"服务器错误"});
+            } 
+            else{
+                res.send({"result":"success"});
+            }
+          }) 
+
         }) 
            
        }
